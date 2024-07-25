@@ -32,7 +32,7 @@ def craw(url):
     #     idx = None
     page.goto(url)
     html = bs(page.content()).prettify()
-    cur.execute("UPDATE tpo.xdf.writing_integrated SET full_html = %s, downloaded=true WHERE url = %s", (html, url))
+    cur.execute("UPDATE tpo.xdf.writing_independent SET full_html = %s, downloaded=true WHERE url = %s", (html, url))
     print(f"examid: {parse_qs(urlparse(url).query)['examId'][0]}, successful")
     conn.commit()
 
