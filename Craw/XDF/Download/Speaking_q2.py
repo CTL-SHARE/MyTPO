@@ -10,26 +10,13 @@ from playwright.sync_api import sync_playwright
 
 dotenv.load_dotenv()
 
-conn = psycopg2.connect(
-    host="localhost",
-    port="5432",
-    dbname="tpo",
-    user="",
-    password=""
-)
+conn = psycopg2.connect(host="localhost", port="5432", dbname="tpo", user="", password="")
 cur = conn.cursor()
 cur.execute("SELECT * FROM tpo.xdf.speaking_q2 WHERE downloaded = false OR downloaded IS NULL")
 rows = cur.fetchall()
 
 
 def craw(url):
-    # try:
-    #     idx = parse_qs(urlparse(url).query)['orderNum'][0]
-    # except Exception as e:
-    #     # file = json.load(open("exceptions.json", 'r'))
-    #     # file["reading"].append({"url": url, "exception": str(e)})
-    #     # json.dump(file, open("exceptions.json", 'w'))
-    #     idx = None
     page.goto(url)
     html = bs(page.content()).prettify()
     cur.execute("UPDATE tpo.xdf.speaking_q2 SET full_html = %s, downloaded=true WHERE url = %s", (html, url))

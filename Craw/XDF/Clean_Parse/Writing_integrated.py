@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bs
 
 conn = psycopg2.connect(host="localhost", port="5432", dbname="tpo", user="", password="")
 cur = conn.cursor()
-cur.execute("SELECT examid, full_html FROM xdf.writing_integrated")
+cur.execute("SELECT examid, full_html FROM tpo.xdf.writing_integrated")
 rows = cur.fetchall()
 
 for row in rows:
@@ -26,7 +26,7 @@ for row in rows:
             "  ", "").strip()
 
     cur.execute(
-        "UPDATE xdf.writing_integrated SET caption_html = %s, caption_clean = %s, passage_html = %s, passage_clean = %s, audio_url = %s, audio_download = false, transcription = %s WHERE examid = %s",
+        "UPDATE tpo.xdf.writing_integrated SET caption_html = %s, caption_clean = %s, passage_html = %s, passage_clean = %s, audio_url = %s, audio_download = false, transcription = %s WHERE examid = %s",
         (
             str(caption_html), caption_clean, str(passage_html), passage_clean, audio_url, transcription,
             str(int(row[0]))))

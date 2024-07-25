@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bs
 
 conn = psycopg2.connect(host="localhost", port="5432", dbname="tpo", user="", password="")
 cur = conn.cursor()
-cur.execute("SELECT examid, full_html FROM xdf.writing_independent")
+cur.execute("SELECT examid, full_html FROM tpo.xdf.writing_independent")
 rows = cur.fetchall()
 
 for row in rows:

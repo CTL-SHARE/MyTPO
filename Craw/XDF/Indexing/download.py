@@ -10,13 +10,7 @@ data = json.load(open("index_info.json", 'r'))
 
 load_dotenv()
 
-conn = psycopg2.connect(
-    host="localhost",
-    port="5432",
-    dbname="tpo",
-    user="",
-    password=""
-)
+conn = psycopg2.connect(host="localhost", port="5432", dbname="tpo", user="", password="")
 cur = conn.cursor()
 
 
@@ -24,11 +18,9 @@ def craw(index: int):
     url = (f"https://www.testgts.com/toeflMockBrowse/mockWriteView?examId={index}&timuType=1&uid"
            f"=86bb44b21679490ebf8b9045447bc419&classExamId=191687")
     # time.sleep(3)
-    import playwright
     try:
         resp = page.goto(url)
-    except Exception as e:
-        pass
+    except Exception:
         return None
 
     if resp.status == 200 and resp.text() != "":
