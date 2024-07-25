@@ -1,0 +1,810 @@
+{
+  "questions": [
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "3-7-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "26-34-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "27-38-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "28-41-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "41-74-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "51-101-11",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "53-106-11",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "54-111-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "87-195-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "88-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "100-209-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "122-229-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "123-230-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "135-244-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "137-250-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "137-251-12",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "142-265-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "144-229-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "146-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "147-195-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "150-278-12",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "150-278-13",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "150-279-11",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "152-195-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "152-229-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "154-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "155-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "156-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "159-195-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "159-229-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "161-281-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "233-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "235-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "237-199-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "238-289-9",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "264-308-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "266-313-10",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "283-333-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "290-337-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "291-341-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "319-357-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "319-358-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "323-369-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "325-376-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "328-384-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "333-399-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "333-400-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "334-403-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "336-409-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "337-411-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "337-412-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "338-415-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "340-420-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "340-420-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "340-421-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "341-423-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "346-439-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "347-443-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "349-449-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "350-452-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "353-460-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "353-460-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "353-461-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "353-461-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "357-472-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "359-479-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "361-483-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "362-487-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "363-489-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "364-493-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "365-495-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "369-507-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "369-508-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "369-508-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "371-513-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "371-515-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "372-516-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "372-518-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "374-522-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "374-524-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "376-528-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "377-532-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "378-536-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "380-540-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "383-550-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "385-555-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "386-560-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "391-574-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "392-577-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "402-606-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "403-610-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "477-613-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "484-615-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "484-616-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "485-618-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "485-620-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "486-621-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "486-623-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "488-629-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "489-630-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "494-411-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "497-443-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "498-421-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "498-449-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "577-673-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "581-683-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "616-691-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "620-704-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "623-712-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "652-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "653-613-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "659-630-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "659-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "693-460-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "693-460-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "695-443-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "696-449-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "756-630-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "756-683-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "757-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "758-479-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "758-483-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "758-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "764-800-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "766-805-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "768-613-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "773-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "776-577-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "779-439-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "780-443-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "781-487-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "784-811-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "795-823-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "795-823-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "802-357-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "802-358-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "806-369-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "808-376-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "811-384-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "816-399-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "816-400-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "817-403-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "819-493-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "820-495-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "825-540-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "828-550-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "830-555-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "834-618-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "836-621-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "845-800-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "847-805-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "851-574-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "852-577-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "859-606-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "860-610-2",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "861-409-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "862-411-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "862-412-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "863-415-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "865-420-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "865-420-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "865-421-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "866-423-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "871-439-4",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "878-460-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "878-460-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "882-472-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "886-483-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "887-487-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "889-613-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "890-615-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "890-616-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "892-630-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "894-673-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "896-683-5",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "898-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "901-811-6",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "923-460-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "923-460-9",
+      "'NoneType' object has no attribute 'text'"
+    ],
+    [
+      "925-443-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "926-449-3",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "929-848-1",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "933-691-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "969-728-7",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "971-704-8",
+      "'NoneType' object has no attribute 'find'"
+    ],
+    [
+      "974-712-8",
+      "'NoneType' object has no attribute 'find'"
+    ]
+  ],
+  "passages": [
+    "6-16",
+    "6-16",
+    "6-16",
+    "6-16",
+    "6-16",
+    "6-16",
+    "6-16",
+    "6-16",
+    "10-26",
+    "11-30",
+    "33-51",
+    "35-56",
+    "39-68",
+    "40-71",
+    "47-88",
+    "47-89",
+    "47-90",
+    "51-100",
+    "52-103",
+    "53-108",
+    "54-110",
+    "57-120",
+    "58-121",
+    "59-125",
+    "59-126",
+    "60-127",
+    "61-132",
+    "64-140",
+    "78-157",
+    "81-163",
+    "124-233",
+    "166-285",
+    "238-291",
+    "264-309",
+    "277-326"
+  ],
+  "SQL": []
+}
