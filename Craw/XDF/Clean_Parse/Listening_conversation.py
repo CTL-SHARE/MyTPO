@@ -1,4 +1,4 @@
-import json
+# renewed parse methods, write to new db copy
 import re
 
 import psycopg2
@@ -8,76 +8,77 @@ conn = psycopg2.connect(host="localhost", port="5432", dbname="tpo", user="", pa
 cur = conn.cursor()
 
 cur.execute(
-    "SELECT DISTINCT examid FROM tpo.xdf.listening_conversation WHERE full_html IS NOT NULL AND downloaded = true and parsed is NULL order by examid")
+    "SELECT url, full_html FROM tpo.xdf.listening_conversation WHERE parsed is null ORDER BY examid, audioid, num")  # null = unvisited, true = successful, false = fail
+questions = cur.fetchall()
 
-examids = cur.fetchall()
+for question in questions:
+    url = question[0]
 
+    try:
+        html = bs(question[1], 'html.parser')
 
-def parse(html):
-    question_html = html.find('div', {'class': 'question'}).find('div', {'class': None})
+        caption_html = html.find('ul', {'class': 'ul-title'})
+        caption_clean = re.sub(r'\s+', ' ', caption_html.text).strip()  # text format
 
-    prompt_clean = ""
-    for i in question_html.find_all('p'):
-        if 'class' not in i.attrs and len(i.text.replace('\n', '').strip()) > 0:
-            # clear all attributes of descendant tags
-            for j in i.find_all():
-                j.attrs = {}
-            i.attrs = {}
-            prompt_clean += str(i.prettify())
+        question_html = html.find('div', {'class': 'question'}).find('div', {'class': None})
 
-    choices: list[str] = []
-    choices_html = question_html.find_all('li')
+        ul = question_html.find('ul')
 
-    for i in choices_html:
-        choices.append(re.sub(r'\s+', ' ', i.text).strip())
+        if ul.find('table'):  # table
+            choices = []
+            answers = []
+            for th in ul.find('table').find_all('tr')[0].find_all('th'):
+                choices.append(re.sub(r'\s+', ' ', th.text).strip())
+            choices.append('#')
 
-    answers = [question_html.find('div', {'class': 'iradio_square-blue icheck-radio checked disabled'}).find('input')[
-                   "id"].replace("answer", "")]
+            for tr in ul.find_all('table')[0].find_all('tr')[1:]:
+                choices.append(re.sub(r'\s+', ' ', tr.find('th').text).strip())
+                for td in tr.find_all('td'):
+                    if td.find_all('span', attrs=True):
+                        answers.append(td['data-aid'])
+                        break
+        else:  # choiced
+            choices = [re.sub(r'\s+', ' ', choice.text).strip() for choice in question_html.find_all('li')]
+            if question_html.find_all(class_='icheckbox_square-blue icheck-checkbox checked disabled'):  # n_m
+                answers = [answer.find('input')["id"].replace("answer", "") for answer in
+                           question_html.find_all(class_='icheckbox_square-blue icheck-checkbox checked disabled')]
+            else:  # n_1
+                answers = [question_html.find(class_='iradio_square-blue icheck-radio checked disabled').find('input')[
+                               "id"].replace("answer", "")]
 
-    audio_url = [html.find('audio', {'id': 'listenAudio'})['src'], html.find('audio', {'id': 'audio'})['src']]
+        for img in question_html.find_all('img'):
+            img.decompose()
 
-    if "暂无原文" in html.find('div', {'role': 'tabpanel'}).text:
-        transcription = None
-    else:
-        transcription = html.find('div', {'role': 'tabpanel'}).text.replace("\n\n", "").replace("\t", ": ").replace(
-            "  ", "").strip()
+        for span in question_html.find_all('span'):
+            span.attrs = {}
 
-    cur.execute(
-        "UPDATE tpo.xdf.listening_conversation SET question_html = %s, prompt_clean = %s, choices = %s, answers = %s, audio_url = %s, audio_download = false, transcription = %s, parsed = true WHERE examid = %s and audioid = %s and num = %s",
-        (str(question_html.prettify()), str(prompt_clean), choices, answers, audio_url, transcription,
-         str(int(examid[0])), str(int(audioid[0])),
-         str(int(question[0]))))
+        prompt_clean = ""  # html format
+        for i in question_html.find_all('p'):
+            if 'class' not in i.attrs and len(i.text.replace('\n', '').strip()) > 0:
+                # clear all attributes of descendant tags
+                for j in i.find_all():
+                    j.attrs = {}
+                i.attrs = {}
+                prompt_clean += str(i.prettify())
 
+        if "暂无原文" in html.find('div', {'role': 'tabpanel'}).text:
+            transcription = None
+        else:
+            transcription = html.find('div', {'role': 'tabpanel'}).text.replace("\n\n", "").replace("\t", ": ").replace(
+                "  ", "").strip()
 
-for examid in examids:
-    cur.execute("SELECT DISTINCT audioid FROM tpo.xdf.listening_conversation WHERE examid = %s", (str(int(examid[0])),))
-    audioids = cur.fetchall()
+        prompt_audio_url = html.find('audio', {'id': 'audio'})['src']
+        listening_audio_url = html.find('audio', {'id': 'listenAudio'})['src']
 
-    for audioid in audioids:
         cur.execute(
-            "SELECT DISTINCT num, full_html FROM tpo.xdf.listening_conversation WHERE examid = %s and audioid = %s",
-            (str(int(examid[0])), str(int(audioid[0]))))
-        questions = cur.fetchall()
+            "UPDATE tpo.xdf.listening_conversation SET caption_html = %s, caption_clean = %s, question_html = %s, prompt_clean = %s, choices = %s, answers = %s, transcription = %s, prompt_audio_url = %s, listening_audio_url = %s, parsed = true WHERE url = %s",
+            (str(caption_html), caption_clean, str(question_html), prompt_clean, choices, answers, transcription,
+             str(prompt_audio_url), str(listening_audio_url), url))
+        conn.commit()
 
-        for question in questions:
-            try:
-                html = bs(question[1], 'html.parser')
-
-                caption_html = html.find('ul', {'class': 'ul-title'})
-                caption_clean = re.sub(r'\s+', ' ', caption_html.text).strip()
-
-                cur.execute(
-                    "UPDATE tpo.xdf.listening_conversation SET caption_html = %s, caption_clean = %s WHERE examid = %s and audioid = %s and question_index = %s",
-                    (str(caption_html), str(caption_clean), str(int(examid[0])),
-                     str(int(audioid[0])), str(int(question[0]))))
-                parse(html)
-
-                conn.commit()
-
-                print(f"{examid[0]}-{audioid[0]}-{question[0]}, parsed successfully")
-
-            except Exception as e:
-                exceptions = json.load(open("Exceptions/listening_conversation.json", "r"))
-                exceptions["SQL"].append([f"{examid[0]}-{audioid[0]}-{question[0]}", f"{e}"])
+    except Exception as e:
+        print("Error with: ", url)
+        cur.execute("UPDATE tpo.xdf.listening_conversation SET parsed = false WHERE url = %s", (url,))
+        conn.commit()
 
 conn.close()
