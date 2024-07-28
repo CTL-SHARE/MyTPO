@@ -21,7 +21,7 @@ user_agent = {
 def download_file(row):
     examid, audioid, listening_audio_url = row
     local_filename = f"{str(int(examid))}-{str(int(audioid))}.mp3"
-    audio_url = listening_audio_url.replace('{', '').replace('}', '').replace('\"', '')
+    audio_url = listening_audio_url.replace('{', '').replace('}', '').replace('\"', '').replace('\n', '')
     file_path = os.path.join(download_dir, local_filename)
     try:
         with requests.get(audio_url, stream=True) as r:
