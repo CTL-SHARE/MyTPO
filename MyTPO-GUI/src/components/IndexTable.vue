@@ -8,9 +8,9 @@ const router = useRouter();
 <template>
   <div>
     <q-btn class="q-ma-md" color="primary" icon="visibility"
-           inline-label label="Preview" @click="console.log(selection)"></q-btn>
+           inline-label label="Preview" no-caps @click="console.log(selection)"></q-btn>
     <q-btn class="q-mx-md" color="secondary" icon="fast_forward"
-           inline-label label="Mock" @click="console.log(selection)"></q-btn>
+           inline-label label="Mock" no-caps @click="console.log(selection)"></q-btn>
     <span v-show="selection.length === 1" class="q-mx-md">1 passage selected</span>
     <span v-show="selection.length >= 2" class="q-mx-md">{{ selection.length }} passages selected</span>
   </div>
@@ -50,11 +50,11 @@ const router = useRouter();
         </q-td>
         <q-td key="actions" :props="props" class="q-mx-md">
           <q-btn :to="'/'+this.view_type+'/preview/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')" class="q-mx-md"
-                 icon="visibility"
+                 color="primary" icon="visibility" no-caps outline
                  inline-label label="Preview">
           </q-btn>
           <q-btn :to="'/'+this.view_type+'/mock/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')" class="q-mx-md"
-                 icon="fast_forward"
+                 color="secondary" icon="fast_forward" no-caps outline
                  inline-label label="Mock"></q-btn>
         </q-td>
 
