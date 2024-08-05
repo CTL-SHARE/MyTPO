@@ -37,7 +37,7 @@ const router = useRouter();
         <q-td class="q-mx-md">
           <q-checkbox :model-value="props.selected" dense @update:model-value="updateRows(props.row)"></q-checkbox>
         </q-td>
-        <q-td key="title" :props="props" class="q-mx-md">{{ props.row.title }}</q-td>
+        <q-td key="caption" :props="props" class="q-mx-md">{{ props.row.caption }}</q-td>
         <q-td key="progress" :props="props" class="q-mx-md">
           <q-linear-progress :value="props.row.finish / props.row.full" color="positive" rounded></q-linear-progress>
           <div>{{ props.row.finish }} / {{ props.row.full }}</div>
@@ -48,14 +48,13 @@ const router = useRouter();
               class="q-mx-md"
         >{{ col.value }}
         </q-td>
-        <q-td key="actions" :props="props" class="q-mx-md">
-          <q-btn :to="'/'+this.view_type+'/preview/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')" class="q-mx-md"
-                 color="primary" icon="visibility" no-caps outline
-                 inline-label label="Preview">
-          </q-btn>
-          <q-btn :to="'/'+this.view_type+'/mock/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')" class="q-mx-md"
-                 color="secondary" icon="fast_forward" no-caps outline
-                 inline-label label="Mock"></q-btn>
+        <q-td key="actions" :props="props">
+          <q-btn :to="'/'+view_type+'/preview/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')"
+                 class="q-mx-xs"
+                 color="primary" icon="visibility" outline round></q-btn>
+          <q-btn :to="'/'+view_type+'/mock/'+props.row.examid+(props.row.pid? ('/'+props.row.pid) : '')"
+                 class="q-mx-xs"
+                 color="secondary" icon="fast_forward" outline round></q-btn>
         </q-td>
 
       </q-tr>
