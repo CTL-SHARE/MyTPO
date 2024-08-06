@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-header class="text-center">
+  <q-layout>
+    <q-header class="text-center" elevated>
       <q-toolbar>
         <q-toolbar-title class="text-h6">Welcome to MyTPO!</q-toolbar-title>
         <q-btn-dropdown dense flat>
@@ -11,120 +11,127 @@
 
     </q-header>
 
-    <q-page-container></q-page-container>
-    <q-dialog v-model="noDB" maximized persistent>
-      <q-card>
-        <q-card-section>
-          <div class="text-h6">Error</div>
-        </q-card-section>
+    <q-page-container>
+      <q-page class="column justify-start">
+        <div class="column col absolute-full q-pa-md">
+          <q-dialog v-model="noDB" maximized persistent>
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Error</div>
+              </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          No database located. Please fix in settings.
-        </q-card-section>
+              <q-card-section class="q-pt-none">
+                No database located. Please fix in settings.
+              </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn color="primary" flat label="Go to settings" to="/settings"/>
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+              <q-card-actions align="right">
+                <q-btn color="primary" flat label="Go to settings" to="/settings"/>
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
 
-    <div class="q-pa-lg q-mb-lg">
-      <q-tabs v-model="tab_main" active-color="primary" align="justify" class="text-grey" indicator-color="primary"
-              no-caps>
-        <q-tab icon="menu_book" label="Reading" name="reading"></q-tab>
-        <q-tab icon="headphones" label="Listening" name="listening"></q-tab>
-        <q-tab icon="mic" label="Speaking" name="speaking"></q-tab>
-        <q-tab icon="edit_note" label="Writing" name="writing"></q-tab>
-        <q-tab icon="monitor" label="Full-length Practice" name="full-length"></q-tab>
-      </q-tabs>
+          <div class="q-pa-lg q-mb-lg">
+            <q-tabs v-model="tab_main" active-color="primary" align="justify" class="text-grey"
+                    indicator-color="primary"
+                    no-caps>
+              <q-tab icon="menu_book" label="Reading" name="reading"></q-tab>
+              <q-tab icon="headphones" label="Listening" name="listening"></q-tab>
+              <q-tab icon="mic" label="Speaking" name="speaking"></q-tab>
+              <q-tab icon="edit_note" label="Writing" name="writing"></q-tab>
+              <q-tab icon="monitor" label="Full-length Practice" name="full-length"></q-tab>
+            </q-tabs>
 
-      <q-tab-panels v-model="tab_main" animated>
-        <q-tab-panel name="reading">
-          <IndexTable :cols="read_cols" :rows="read_data" view_type="read"></IndexTable>
-        </q-tab-panel>
+            <q-tab-panels v-model="tab_main" animated>
+              <q-tab-panel name="reading">
+                <IndexTable :cols="read_cols" :rows="read_data" view_type="read"></IndexTable>
+              </q-tab-panel>
 
-        <q-tab-panel name="listening">
-          <q-tabs v-model="tab_listen" active-color="secondary" align="justify" class="text-grey"
-                  indicator-color="secondary"
-                  inline-label no-caps>
-            <q-tab icon="forum" label="Conversation" name="conversation"></q-tab>
-            <q-tab icon="school" label="Lecture" name="lecture"></q-tab>
-          </q-tabs>
+              <q-tab-panel name="listening">
+                <q-tabs v-model="tab_listen" active-color="secondary" align="justify" class="text-grey"
+                        indicator-color="secondary"
+                        inline-label no-caps>
+                  <q-tab icon="forum" label="Conversation" name="conversation"></q-tab>
+                  <q-tab icon="school" label="Lecture" name="lecture"></q-tab>
+                </q-tabs>
 
-          <q-tab-panels
-            v-model="tab_listen" animated swipeable>
-            <q-tab-panel name="conversation">
-              <IndexTable :cols="listen_cols" :rows="listen_conversation_data" view_type="listen/conv"></IndexTable>
-            </q-tab-panel>
+                <q-tab-panels
+                  v-model="tab_listen" animated swipeable>
+                  <q-tab-panel name="conversation">
+                    <IndexTable :cols="listen_cols" :rows="listen_conversation_data"
+                                view_type="listen/conv"></IndexTable>
+                  </q-tab-panel>
 
-            <q-tab-panel name="lecture">
-              <IndexTable :cols="listen_cols" :rows="listen_lecture_data" view_type="listen/lec"></IndexTable>
-            </q-tab-panel>
+                  <q-tab-panel name="lecture">
+                    <IndexTable :cols="listen_cols" :rows="listen_lecture_data" view_type="listen/lec"></IndexTable>
+                  </q-tab-panel>
 
-          </q-tab-panels>
+                </q-tab-panels>
 
-        </q-tab-panel>
-
-
-        <q-tab-panel name="speaking">
-          <q-tabs v-model="tab_speak" active-color="secondary" align="justify" class="text-grey"
-                  indicator-color="secondary"
-                  inline-label no-caps>
-            <q-tab label="Task1" name="q1"></q-tab>
-            <q-tab label="Task2" name="q2"></q-tab>
-            <q-tab label="Task3" name="q3"></q-tab>
-            <q-tab label="Task4" name="q4"></q-tab>
-          </q-tabs>
-
-          <q-tab-panels
-            v-model="tab_speak"
-            animated
-            swipeable>
-            <q-tab-panel name="q1">
-              <IndexTable :cols="speak_write_cols" :rows="speak_q1_data" view_type="speak/q1"></IndexTable>
-            </q-tab-panel>
-            <q-tab-panel name="q2">
-              <IndexTable :cols="speak_write_cols" :rows="speak_q2_data" view_type="speak/q2"></IndexTable>
-            </q-tab-panel>
-            <q-tab-panel name="q3">
-              <IndexTable :cols="speak_write_cols" :rows="speak_q3_data" view_type="speak/q3"></IndexTable>
-            </q-tab-panel>
-            <q-tab-panel name="q4">
-              <IndexTable :cols="speak_write_cols" :rows="speak_q4_data" view_type="speak/q4"></IndexTable>
-            </q-tab-panel>
-          </q-tab-panels>
-        </q-tab-panel>
+              </q-tab-panel>
 
 
-        <q-tab-panel name="writing">
-          <q-tabs v-model="tab_write" active-color="secondary" align="justify" class="text-grey"
-                  indicator-color="secondary"
-                  inline-label no-caps>
-            <q-tab icon="compare" label="Integrated" name="integrated"></q-tab>
-            <q-tab icon="group_add" label="Academic Discussion" name="discussion"></q-tab>
-          </q-tabs>
+              <q-tab-panel name="speaking">
+                <q-tabs v-model="tab_speak" active-color="secondary" align="justify" class="text-grey"
+                        indicator-color="secondary"
+                        inline-label no-caps>
+                  <q-tab label="Task1" name="q1"></q-tab>
+                  <q-tab label="Task2" name="q2"></q-tab>
+                  <q-tab label="Task3" name="q3"></q-tab>
+                  <q-tab label="Task4" name="q4"></q-tab>
+                </q-tabs>
 
-          <q-tab-panels v-model="tab_write" animated swipeable>
-            <q-tab-panel name="integrated">
-              <IndexTable :cols="speak_write_cols" :rows="write_integrated_data"
-                          view_type="write/integrated"></IndexTable>
-            </q-tab-panel>
-            <q-tab-panel name="discussion">
-              <IndexTable :cols="speak_write_cols" :rows="write_independent_data"
-                          view_type="write/independent"></IndexTable>
-            </q-tab-panel>
-          </q-tab-panels>
+                <q-tab-panels
+                  v-model="tab_speak"
+                  animated
+                  swipeable>
+                  <q-tab-panel name="q1">
+                    <IndexTable :cols="speak_write_cols" :rows="speak_q1_data" view_type="speak/q1"></IndexTable>
+                  </q-tab-panel>
+                  <q-tab-panel name="q2">
+                    <IndexTable :cols="speak_write_cols" :rows="speak_q2_data" view_type="speak/q2"></IndexTable>
+                  </q-tab-panel>
+                  <q-tab-panel name="q3">
+                    <IndexTable :cols="speak_write_cols" :rows="speak_q3_data" view_type="speak/q3"></IndexTable>
+                  </q-tab-panel>
+                  <q-tab-panel name="q4">
+                    <IndexTable :cols="speak_write_cols" :rows="speak_q4_data" view_type="speak/q4"></IndexTable>
+                  </q-tab-panel>
+                </q-tab-panels>
+              </q-tab-panel>
 
-        </q-tab-panel>
+
+              <q-tab-panel name="writing">
+                <q-tabs v-model="tab_write" active-color="secondary" align="justify" class="text-grey"
+                        indicator-color="secondary"
+                        inline-label no-caps>
+                  <q-tab icon="compare" label="Integrated" name="integrated"></q-tab>
+                  <q-tab icon="group_add" label="Academic Discussion" name="discussion"></q-tab>
+                </q-tabs>
+
+                <q-tab-panels v-model="tab_write" animated swipeable>
+                  <q-tab-panel name="integrated">
+                    <IndexTable :cols="speak_write_cols" :rows="write_integrated_data"
+                                view_type="write/integrated"></IndexTable>
+                  </q-tab-panel>
+                  <q-tab-panel name="discussion">
+                    <IndexTable :cols="speak_write_cols" :rows="write_independent_data"
+                                view_type="write/independent"></IndexTable>
+                  </q-tab-panel>
+                </q-tab-panels>
+
+              </q-tab-panel>
 
 
-        <q-tab-panel name="full-length">
-          <div>Full-length Practice Content</div>
-        </q-tab-panel>
+              <q-tab-panel name="full-length">
+                <div>Full-length Practice Content</div>
+              </q-tab-panel>
 
-      </q-tab-panels>
+            </q-tab-panels>
 
-    </div>
+          </div>
+        </div>
+      </q-page>
+    </q-page-container>
   </q-layout>
 </template>
 
