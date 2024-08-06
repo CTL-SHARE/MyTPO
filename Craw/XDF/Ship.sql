@@ -43,14 +43,15 @@ from tpo.xdf_portable.speaking_q2
 
 create table tpo.xdf_portable.reading
 (
-    caption text,
-    passage text,
-    prompt  text,
-    choices text array,
-    answers text array,
-    examid  integer,
-    pid     integer,
-    num     integer
+    caption   text,
+    passage   text,
+    prompt    text,
+    paragraph integer,
+    choices   text,
+    answers   text,
+    examid    integer,
+    pid       integer,
+    num       integer
 );
 
 create table tpo.xdf_portable.listening_conversation
@@ -60,8 +61,8 @@ create table tpo.xdf_portable.listening_conversation
     local_mp3_prompt    text,
     local_mp3_listening text,
     transcription       text,
-    choices             text array,
-    answers             text array,
+    choices text,
+    answers text,
     examid              integer,
     audioid             integer,
     num                 integer
@@ -78,11 +79,11 @@ select caption_clean, prompt_clean, examid
 from tpo.xdf.speaking_q1;
 
 insert into tpo.xdf_portable.speaking_q2 (caption, passage, local_mp3, transcription, examid)
-select caption_clean, passage_clean, audio_local_name, transcription, examid
+select caption_clean, passage_json, audio_local_name, transcription, examid
 from tpo.xdf.speaking_q2;
 
 insert into tpo.xdf_portable.speaking_q3 (caption, passage, local_mp3, transcription, examid)
-select caption_clean, passage_clean, audio_local_name, transcription, examid
+select caption_clean, passage_json, audio_local_name, transcription, examid
 from tpo.xdf.speaking_q3;
 
 insert into tpo.xdf_portable.speaking_q4 (caption, local_mp3, transcription, examid)
@@ -90,19 +91,20 @@ select caption_clean, audio_local_name, transcription, examid
 from tpo.xdf.speaking_q4;
 
 insert into tpo.xdf_portable.writing_independent (caption, prompt, examid)
-select caption_clean, passage_clean, examid
+select caption_clean, passage_json, examid
 from tpo.xdf.writing_independent
 WHERE trash = false;
 
 insert into tpo.xdf_portable.writing_integrated (caption, passage, local_mp3, transcription, examid)
-select caption_clean, passage_clean, audio_local_name, transcription, examid
+select caption_clean, passage_json, audio_local_name, transcription, examid
 from tpo.xdf.writing_integrated;
 
-insert into tpo.xdf_portable.reading (caption, passage, prompt, choices, answers, examid, pid, num)
+insert into tpo.xdf_portable.reading (caption, passage, prompt, paragraph, choices, answers, examid, pid, num)
 select caption_clean,
-       passage_clean,
-       prompt_clean,
-       choices,
+       passage_json,
+       prompt_json,
+       paragraph_num,
+       choices_json,
        answers,
        examid,
        pid,
@@ -112,7 +114,7 @@ from tpo.xdf.reading;
 insert into tpo.xdf_portable.listening_conversation (caption, prompt, local_mp3_prompt, local_mp3_listening,
                                                      transcription, choices, answers, examid, audioid, num)
 select caption_clean,
-       prompt_clean,
+       prompt_text,
        prompt_audio_local_name,
        listening_audio_local_name,
        transcription,
@@ -126,7 +128,7 @@ from tpo.xdf.listening_conversation;
 insert into tpo.xdf_portable.listening_lecture (caption, prompt, local_mp3_prompt, local_mp3_listening,
                                                 transcription, choices, answers, examid, audioid, num)
 select caption_clean,
-       prompt_clean,
+       prompt_text,
        prompt_audio_local_name,
        listening_audio_local_name,
        transcription,
@@ -138,18 +140,16 @@ select caption_clean,
 from tpo.xdf.listening_lecture;
 
 
--- Text array to JSON
+-- text -> text[] -> JSON -> text
 alter table tpo.xdf_portable.reading
-    alter column choices type json using array_to_json(choices);
-alter table tpo.xdf_portable.reading
-    alter column answers type json using array_to_json(answers);
+    alter column answers type text using (array_to_json(answers::text[]))::text;
 
 alter table tpo.xdf_portable.listening_conversation
-    alter column choices type json using array_to_json(choices);
+    alter column choices type text using (array_to_json(choices::text[]))::text;
 alter table tpo.xdf_portable.listening_conversation
-    alter column answers type json using array_to_json(answers);
+    alter column answers type text using (array_to_json(answers::text[]))::text;
 
 alter table tpo.xdf_portable.listening_lecture
-    alter column choices type json using array_to_json(choices);
+    alter column choices type text using (array_to_json(choices::text[]))::text;
 alter table tpo.xdf_portable.listening_lecture
-    alter column answers type json using array_to_json(answers);
+    alter column answers type text using (array_to_json(answers::text[]))::text;
