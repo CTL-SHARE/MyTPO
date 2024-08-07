@@ -152,7 +152,7 @@ const listen_cols = [
   {name: 'caption', label: 'Title', field: 'caption', align: 'center'},
   {name: 'progress', label: 'Progress', field: 'progress', align: 'center'},
   {name: 'examid', label: 'ExamID', field: 'examid', align: 'center'},
-  {name: 'audioid', label: 'AudioID', field: 'audioid', align: 'center'},
+  {name: 'pid', label: 'AudioID', field: 'pid', align: 'center'},
   {name: 'actions', label: '', field: 'actions', align: 'center'}
 ]
 
@@ -201,8 +201,8 @@ export default {
       this.noDB = true
     } else {
       this.read_data = await window.electron.dataSQL('select distinct caption, examid, pid from reading order by examid, pid')
-      this.listen_conversation_data = await window.electron.dataSQL('select distinct caption, examid, audioid from listening_conversation order by examid, audioid')
-      this.listen_lecture_data = await window.electron.dataSQL('select distinct caption, examid, audioid from listening_lecture order by examid, audioid')
+      this.listen_conversation_data = await window.electron.dataSQL('select distinct caption, examid, pid from listening_conversation order by examid, pid')
+      this.listen_lecture_data = await window.electron.dataSQL('select distinct caption, examid, pid from listening_lecture order by examid, pid')
       this.speak_q1_data = await window.electron.dataSQL('select distinct caption, examid from speaking_q1 order by examid')
       this.speak_q2_data = await window.electron.dataSQL('select distinct caption, examid from speaking_q2 order by examid')
       this.speak_q3_data = await window.electron.dataSQL('select distinct caption, examid from speaking_q3 order by examid')
