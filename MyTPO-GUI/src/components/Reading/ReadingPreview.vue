@@ -5,12 +5,12 @@
   <q-layout>
     <q-header class="text-center" elevated>
       <q-toolbar>
+        <q-btn flat icon="home" round to="/"></q-btn>
         <q-btn flat icon="keyboard_arrow_left" label="Previous Passage"/>
         <q-toolbar-title class="text-h6">
-          {{ title }}: {{ $route.params.pid }} - {{ $route.params.examid }}
+          {{ this.query[curr_idx].caption }}: {{ $route.params.pid }} - {{ $route.params.examid }}
         </q-toolbar-title>
         <q-btn flat icon-right="keyboard_arrow_right" label="Next Passage"/>
-        <q-btn flat icon="home" round to="/"></q-btn>
       </q-toolbar>
     </q-header>
 
@@ -120,16 +120,15 @@ export default {
 
   data() {
     return {
-      title: "Test title",
       curr_idx: 0,
-      query: [{passage: '', prompt: '', choices: '', answers: '', paragraph: 0}],
+      query: [{caption: '', passage: '', prompt: '', choices: '', answers: '', paragraph: 0}],
       my_ans: [],
       int_to_char: {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J', 10: 'K'},
     }
   },
   async created() {
-    this.query = await window.electron.dataSQL(`select passage, prompt, choices, answers, paragraph
-                                                from main.reading
+    this.query = await window.electron.dataSQL(`select caption, passage, prompt, choices, answers, paragraph
+                                                from reading
                                                 where examid = ${this.$route.params.examid}
                                                   and pid = ${this.$route.params.pid}
                                                 order by num`)
@@ -141,8 +140,6 @@ export default {
       i.passage = JSON5.parse(i.passage);
       i.prompt = JSON5.parse(i.prompt);
     }
-
-    console.log(this.query)
 
     this.my_ans = Array(this.query.length).fill([]);
   },
