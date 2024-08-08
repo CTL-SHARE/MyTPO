@@ -1,10 +1,3 @@
-<script setup>
-import {useRouter} from 'vue-router';
-
-const router = useRouter();
-
-</script>
-
 <template>
   <div>
     <q-btn class="q-ma-md" color="primary" icon="visibility"
@@ -15,8 +8,7 @@ const router = useRouter();
     <span v-show="selection.length >= 2" class="q-mx-md">{{ selection.length }} passages selected</span>
   </div>
 
-  <q-table ref="table" :columns="cols" :rows="rows" :selected.sync="selection" row-key="examid" selection="multiple"
-           separator="cell">
+  <q-table ref="table" :columns="cols" :rows="rows" no-data-label="Loading..." row-key="examid" separator="cell">
     <template v-slot:header="props">
       <q-tr :props="props">
         <q-th class="q-mx-md">
@@ -35,7 +27,8 @@ const router = useRouter();
     <template v-slot:body="props">
       <q-tr :props="props" align="center">
         <q-td class="q-mx-md">
-          <q-checkbox :model-value="props.selected" dense @update:model-value="updateRows(props.row)"></q-checkbox>
+          <q-checkbox :model-value="selection.includes(props.row)" dense
+                      @update:model-value="updateRows(props.row)"></q-checkbox>
         </q-td>
         <q-td key="caption" :props="props" class="q-mx-md">{{ props.row.caption }}</q-td>
         <q-td key="progress" :props="props" class="q-mx-md">
@@ -87,12 +80,18 @@ export default {
   },
   methods: {
     updateRows(row) {
-      const index = this.selection.findIndex(item => item.examid === row.examid);
+      const index = this.selection.findIndex(item => (item.examid === row.examid && item.pid === row.pid));
       if (index === -1) {
         this.selection.push(row);
       } else {
         this.selection.splice(index, 1);
       }
+      this.selection.sort((a, b) => {
+        if (a.examid === b.examid) {
+          return a.pid - b.pid;
+        }
+        return a.examid - b.examid;
+      });
     }
   }
 }
